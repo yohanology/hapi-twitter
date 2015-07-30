@@ -1,4 +1,5 @@
 var Bcrypt = require('bcrypt');
+var Auth = require('./auth');
 
 exports.register = function(server, options, next){
 
@@ -14,7 +15,7 @@ exports.register = function(server, options, next){
         // 1.Input username + password
         db.collection('users').findOne( { username: user.username }, function(err, userMongo){
           if (err) {
-            return reply('Internation MongoDb error');
+            return reply('Internal MongoDb error');
           }
 
           // stop if user doesn't exist
@@ -40,7 +41,7 @@ exports.register = function(server, options, next){
 
             db.collection('sessions').insert(session, function(err, writeResult){
               if (err) {
-                return reply('Internation MongoDb error');
+                return reply('Internal MongoDb error');
               }
 
               // 4.Set the same session_id in the CLIENT's cookie
@@ -51,6 +52,20 @@ exports.register = function(server, options, next){
 
           });
         });
+
+      }
+    },
+    {
+      // deifning a route to check if the user is authenticated / logged in
+      method: 'GET',
+      path: '/authenticated',
+      handler: function(request, reply){
+        var callback = function(result) {
+          reply(result);
+        };
+
+        //  calling the function
+        Auth.authenticated(request, callback);
 
       }
     }
