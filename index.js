@@ -7,8 +7,8 @@ var server = new Hapi.Server();
 
 // Configure server connections / host
 server.connection({
-  host: 'localhost',
-  port: 3000,
+  host: '0.0.0.0',
+  port: process.env.PORT || 3000,
   routes: {
     cors: {
       headers: ["Access-Control-Allow-Credentials"],
@@ -34,7 +34,7 @@ var plugins = [
     register: require('yar'),
     options: {
       cookieOptions: {
-        password: 'helloman',
+        password: process.env.COOKIE_PASSWORD || 'helloman',
         isSecure: false //
       }
     }
@@ -43,7 +43,7 @@ var plugins = [
   {
     register: require('hapi-mongodb'),
     options: {
-      url: 'mongodb://127.0.0.1:27017/hapi-twitter',
+      url: process.env.MONGOLAB_URI || 'mongodb://127.0.0.1:27017/hapi-twitter',
       settings: {
         db: {
           native_parser: false
