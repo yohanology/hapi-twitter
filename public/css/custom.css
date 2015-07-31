@@ -1,0 +1,62 @@
+body {
+  background-color: #f8f8f8;
+  font-family: 'Lato';
+  font-size: 16px;
+}
+
+h2 {
+  font-family: 'Dosis';
+  font-weight: 100;
+  font-size: 4rem;
+  /*letter-spacing: 5px;*/
+}
+
+h3 {
+  font-family: 'Lato';
+  font-size: 2rem;
+}
+
+h1 {
+  font-family: 'Lato';
+  font-size: 8rem;
+  font-weight: 800;
+  color: #3a99c7;
+}
+
+.container {
+  margin: 10rem auto;
+  max-width: 80rem;
+}
+
+#header {
+  margin-bottom: 5rem;
+}
+
+#app-title {
+  font-weight: 800;
+}
+
+.sessions-box {
+  padding-top: 30px;
+}
+
+.signin-box {
+  margin-top: 30px;
+}
+
+.btn-default {
+  font-size: 18px;
+  border: none;
+  background-color: #4CAF50;
+  color: #fff;
+}
+
+.btn-default:hover {
+  background-color: #8BC34A;
+  color: #fff;
+}
+
+.form-control {
+  font-size: 16px;
+  padding: 8px 15px;
+}
